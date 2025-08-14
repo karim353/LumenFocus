@@ -19,6 +19,7 @@
 		A1234567890123456789012D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A1234567890123456789012F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1234567890123456789013B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A1234567890123456789013C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +47,8 @@
 				A1234567890123456789012B /* LumenFocusApp.swift */,
 				A1234567890123456789012D /* ContentView.swift */,
 				A1234567890123456789012F /* Assets.xcassets */,
-				A1234567890123456789012K /* Preview Content */,
+				A1234567890123456789013C /* Info.plist */,
+				A1234567890123456789013D /* Preview Content */,
 			);
 			path = LumenFocus;
 			sourceTree = "<group>";
@@ -59,7 +61,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A1234567890123456789012K /* Preview Content */ = {
+		A1234567890123456789013D /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
 				A1234567890123456789013B /* Preview Assets.xcassets */,
@@ -70,13 +72,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A1234567890123456789012L /* LumenFocus */ = {
+		A1234567890123456789012K /* LumenFocus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A1234567890123456789012M /* Build configuration list for PBXNativeTarget "LumenFocus" */;
+			buildConfigurationList = A1234567890123456789012L /* Build configuration list for PBXNativeTarget "LumenFocus" */;
 			buildPhases = (
-				A1234567890123456789012N /* Sources */,
+				A1234567890123456789012M /* Sources */,
 				A1234567890123456789012G /* Frameworks */,
-				A1234567890123456789012O /* Resources */,
+				A1234567890123456789012N /* Resources */,
 			);
 			buildRules = (
 			);
@@ -90,39 +92,38 @@
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A1234567890123456789012P /* Project object */ = {
+		A1234567890123456789012O /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					A1234567890123456789012L = {
+					A1234567890123456789012K = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = A1234567890123456789012Q /* Build configuration list for PBXProject "LumenFocus" */;
+			buildConfigurationList = A1234567890123456789012P /* Build configuration list for PBXProject "LumenFocus" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
-				ru,
 			);
 			mainGroup = A1234567890123456789012H;
 			productRefGroup = A1234567890123456789012J /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A1234567890123456789012L /* LumenFocus */,
+				A1234567890123456789012K /* LumenFocus */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A1234567890123456789012O /* Resources */ = {
+		A1234567890123456789012N /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -134,7 +135,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A1234567890123456789012N /* Sources */ = {
+		A1234567890123456789012M /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -146,7 +147,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		A1234567890123456789012R /* Debug */ = {
+		A1234567890123456789012Q /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -209,7 +210,7 @@
 			};
 			name = Debug;
 		};
-		A1234567890123456789012S /* Release */ = {
+		A1234567890123456789012R /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -265,7 +266,7 @@
 			};
 			name = Release;
 		};
-		A1234567890123456789012T /* Debug */ = {
+		A1234567890123456789012S /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -275,6 +276,9 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -292,7 +296,7 @@
 			};
 			name = Debug;
 		};
-		A1234567890123456789012U /* Release */ = {
+		A1234567890123456789012T /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -302,6 +306,9 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -322,25 +329,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A1234567890123456789012M /* Build configuration list for PBXNativeTarget "LumenFocus" */ = {
+		A1234567890123456789012L /* Build configuration list for PBXNativeTarget "LumenFocus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A1234567890123456789012T /* Debug */,
-				A1234567890123456789012U /* Release */,
+				A1234567890123456789012S /* Debug */,
+				A1234567890123456789012T /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A1234567890123456789012Q /* Build configuration list for PBXProject "LumenFocus" */ = {
+		A1234567890123456789012P /* Build configuration list for PBXProject "LumenFocus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A1234567890123456789012R /* Debug */,
-				A1234567890123456789012S /* Release */,
+				A1234567890123456789012Q /* Debug */,
+				A1234567890123456789012R /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = A1234567890123456789012P /* Project object */;
+	rootObject = A1234567890123456789012O /* Project object */;
 }
