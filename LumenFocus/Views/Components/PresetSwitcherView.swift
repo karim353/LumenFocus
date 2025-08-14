@@ -58,7 +58,7 @@ struct PresetCardView: View {
                 HStack(spacing: 4) {
                     ForEach(0..<preset.rounds, id: \.self) { round in
                         Circle()
-                            .fill(isSelected ? Color.white.opacity(0.3) : Color.surface)
+                            .fill(isSelected ? Color.white.opacity(0.3) : Color(.systemGray6))
                             .frame(width: 6, height: 6)
                     }
                 }
@@ -74,13 +74,13 @@ struct PresetCardView: View {
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         ) :
-                        Color.surface
+                        Color(.systemGray6)
                     )
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(
-                        isSelected ? Color.clear : Color.surface.opacity(0.3),
+                        isSelected ? Color.clear : Color(.systemGray6).opacity(0.3),
                         lineWidth: 1
                     )
             )
@@ -99,6 +99,6 @@ struct PresetCardView: View {
 
 #Preview {
     PresetSwitcherView(selectedPreset: .constant(.pomodoro))
-        .background(Color.background)
+        .background(Color(.systemBackground))
         .padding()
 }

@@ -11,6 +11,28 @@ class TimerViewModel: ObservableObject {
     @Published var currentRound = 1
     @Published var totalRounds = 4
     @Published var selectedTask: Task?
+    @Published var selectedPreset: Preset = .pomodoro
+    
+    var timeString: String {
+        let minutes = Int(timeRemaining) / 60
+        let seconds = Int(timeRemaining) % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    var progress: Double {
+        let totalTime: TimeInterval
+        switch currentPhase {
+        case .work:
+            totalTime = currentPreset.workDuration
+        case .shortBreak:
+            totalTime = currentPreset.shortBreakDuration
+        case .longBreak:
+            totalTime = currentPreset.longBreakDuration
+        case .paused:
+            totalTime = 1
+        }
+        return totalTime > 0 ? 1.0 - (timeRemaining / totalTime) : 0.0
+    }
     
     private var timer: Timer?
     private var startDate: Date?
@@ -20,7 +42,6 @@ class TimerViewModel: ObservableObject {
     private var sessionStartDate: Date?
     
     private let coreDataManager = CoreDataManager.shared
-    private let liveActivityManager = LiveActivityManager.shared
     private let notificationService = NotificationService.shared
     private let focusModeService = FocusModeService.shared
     
@@ -35,6 +56,25 @@ class TimerViewModel: ObservableObject {
     
     // MARK: - Timer Control
     
+    func toggleTimer() {
+        if isRunning {
+            pauseTimer()
+        } else {
+            startTimer()
+        }
+    }
+    
+    func resetTimer() {
+        stopTimer()
+        currentRound = 1
+        currentPhase = .work
+        resetTimer()
+    }
+    
+    func skipTimer() {
+        skipPhase()
+    }
+    
     func startTimer() {
         guard !isRunning else { return }
         
@@ -46,19 +86,12 @@ class TimerViewModel: ObservableObject {
             self?.updateTimer()
         }
         
-        // Start Live Activity
-        liveActivityManager.startLiveActivity(
-            taskName: selectedTask?.title ?? "Focus Session",
-            presetName: currentPreset.name,
-            timeRemaining: timeRemaining,
-            currentPhase: currentPhase.rawValue,
-            currentRound: currentRound,
-            totalRounds: totalRounds
-        )
+        // Start Live Activity would go here
+        // liveActivityManager.startLiveActivity(...)
         
         // Activate Focus Mode if enabled
         Task {
-            await focusModeService.activateFocusMode(for: currentPreset)
+            await focusModeService.activateFocusMode()
         }
         
         // Setup smart notifications
@@ -75,8 +108,8 @@ class TimerViewModel: ObservableObject {
         timer?.invalidate()
         timer = nil
         
-        // Pause Live Activity
-        liveActivityManager.pauseLiveActivity()
+        // Pause Live Activity would go here
+        // liveActivityManager.pauseLiveActivity()
         
         triggerHaptic(.medium)
     }
@@ -86,8 +119,8 @@ class TimerViewModel: ObservableObject {
         timer?.invalidate()
         timer = nil
         
-        // Stop Live Activity
-        liveActivityManager.stopLiveActivity()
+        // Stop Live Activity would go here
+        // liveActivityManager.stopLiveActivity()
         
         resetTimer()
         
@@ -130,14 +163,8 @@ class TimerViewModel: ObservableObject {
         
         timeRemaining -= 1
         
-        // Update Live Activity
-        liveActivityManager.updateLiveActivity(
-            timeRemaining: timeRemaining,
-            currentPhase: currentPhase.rawValue,
-            currentRound: currentRound,
-            totalRounds: totalRounds,
-            isRunning: isRunning
-        )
+        // Update Live Activity would go here
+        // liveActivityManager.updateLiveActivity(...)
         
         // Pulse every 60 seconds
         if Int(timeRemaining) % 60 == 0 {
@@ -175,35 +202,18 @@ class TimerViewModel: ObservableObject {
         // Save session to Core Data
         if let startDate = sessionStartDate {
             let duration = Date().timeIntervalSince(startDate)
-            let session = coreDataManager.createSession(
+            let _ = coreDataManager.createSession(
                 startedAt: startDate,
-                completedAt: Date(),
                 duration: duration,
-                currentPhase: currentPhase.rawValue,
-                presetName: currentPreset.name,
-                rounds: Int16(currentRound),
-                isCompleted: true,
+                type: currentPhase.rawValue,
                 task: selectedTask
             )
-            
-            // Update garden based on session completion
-            updateGardenAfterSession(session)
         }
         
         stopTimer()
     }
     
-    private func updateGardenAfterSession(_ session: Session) {
-        // Create a new plant or grow existing ones based on session completion
-        let plantTypes = ["neon-sprout", "glow-fern", "crystal-bloom", "quantum-vine", "stellar-bud"]
-        let randomPlantType = plantTypes.randomElement() ?? "neon-sprout"
-        
-        let plant = coreDataManager.createPlant(plantType: randomPlantType)
-        
-        // Water and grow the plant
-        coreDataManager.waterPlant(plant)
-        coreDataManager.growPlant(plant)
-    }
+
     
     private func resetTimer() {
         switch currentPhase {
@@ -262,20 +272,9 @@ class TimerViewModel: ObservableObject {
     private func setupSmartNotifications() {
         guard let sessionStartDate = sessionStartDate else { return }
         
-        // Create a temporary session for notification scheduling
-        let tempSession = coreDataManager.createSession(
-            startedAt: sessionStartDate,
-            completedAt: nil,
-            duration: 0,
-            currentPhase: currentPhase.rawValue,
-            presetName: currentPreset.name,
-            rounds: Int16(totalRounds),
-            isCompleted: false,
-            task: selectedTask
-        )
-        
-        // Schedule smart notifications
-        notificationService.scheduleSmartNotifications(for: tempSession)
+        // Schedule focus complete notification
+        let focusDuration = currentPreset.workDuration
+        notificationService.scheduleFocusCompleteNotification(in: focusDuration)
     }
     
     // MARK: - Focus Mode Integration

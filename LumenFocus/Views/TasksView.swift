@@ -1,114 +1,59 @@
 import SwiftUI
-import CoreData
 
 struct TasksView: View {
-    @ObservedObject private var coreDataManager = CoreDataManager.shared
     @State private var tasks: [Task] = []
     @State private var showingAddTask = false
-    @State private var selectedTask: Task?
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                LazyVStack(spacing: 16) {
-                    ForEach(tasks) { task in
-                        TaskCardView(task: task) {
-                            selectedTask = task
-                        }
-                    }
+            List {
+                ForEach(tasks) { task in
+                    TaskRowView(task: task)
                 }
-                .padding(24)
+                .onDelete(perform: deleteTasks)
             }
-            .background(Color.background)
             .navigationTitle("Tasks")
-            .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: { showingAddTask = true }) {
-                        Image(systemName: "plus.circle.fill")
-                            .foregroundColor(.accentPrimary)
+                        Image(systemName: "plus")
                     }
                 }
             }
             .sheet(isPresented: $showingAddTask) {
                 AddTaskView { newTask in
-                    // Create task in Core Data
-                    let _ = coreDataManager.createTask(
-                        title: newTask.title,
-                        color: newTask.color.rawValue,
-                        icon: newTask.icon,
-                        tags: newTask.tags
-                    )
-                    loadTasks()
+                    tasks.append(newTask)
                 }
-            }
-            .onAppear {
-                loadTasks()
             }
         }
     }
     
-    private func loadTasks() {
-        tasks = coreDataManager.fetchTasks()
+    private func deleteTasks(offsets: IndexSet) {
+        tasks.remove(atOffsets: offsets)
     }
 }
 
-struct TaskCardView: View {
+struct TaskRowView: View {
     let task: Task
-    let onTap: () -> Void
     
     var body: some View {
-        Button(action: onTap) {
-            HStack(spacing: 16) {
-                // Icon with color background
-                ZStack {
-                    Circle()
-                        .fill(TaskColor(rawValue: task.color ?? "blue")?.color.opacity(0.2) ?? Color.blue.opacity(0.2))
-                        .frame(width: 48, height: 48)
-                    
-                    Image(systemName: task.icon ?? "circle")
-                        .font(.title2)
-                        .foregroundColor(TaskColor(rawValue: task.color ?? "blue")?.color ?? Color.blue)
-                }
-                
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(task.title)
-                        .font(.headline)
-                        .foregroundColor(.primary)
-                    
-                    if let tags = task.tags, !tags.isEmpty {
-                        HStack(spacing: 8) {
-                            ForEach(tags, id: \.self) { tag in
-                                Text(tag)
-                                    .font(.caption)
-                                    .padding(.horizontal, 8)
-                                    .padding(.vertical, 4)
-                                    .background(Color.surface.opacity(0.5))
-                                    .foregroundColor(.secondary)
-                                    .cornerRadius(8)
-                            }
-                        }
-                    }
-                }
-                
-                Spacer()
-                
-                Image(systemName: "chevron.right")
-                    .font(.caption)
+        HStack {
+            VStack(alignment: .leading, spacing: 4) {
+                Text(task.title)
+                    .font(.headline)
+                Text("Created: \(task.createdAt, style: .date)")
+                    .font(.subheadline)
                     .foregroundColor(.secondary)
             }
-            .padding(20)
-            .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(Color.surface)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(TaskColor(rawValue: task.color ?? "blue")?.color.opacity(0.2) ?? Color.blue.opacity(0.2), lineWidth: 1)
-                    )
-            )
-            .shadow(color: (TaskColor(rawValue: task.color ?? "blue")?.color ?? Color.blue).opacity(0.1), radius: 8, x: 0, y: 4)
+            
+            Spacer()
+            
+            // Color indicator
+            Circle()
+                .fill(task.color.color)
+                .frame(width: 12, height: 12)
         }
-        .buttonStyle(PlainButtonStyle())
+        .padding(.vertical, 4)
     }
 }
 

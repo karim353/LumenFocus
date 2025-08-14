@@ -1,332 +1,216 @@
 import Foundation
-import FocusState
-import Intents
-import IntentsUI
+import FamilyControls
+import ManagedSettings
+import DeviceActivity
 
-@MainActor
 class FocusModeService: ObservableObject {
     static let shared = FocusModeService()
     
-    @Published var currentFocusStatus: FocusStatus = .unknown
-    @Published var availableFocusModes: [FocusMode] = []
+    @Published var currentFocusStatus: FocusStatus = .unavailable
     @Published var isFocusModeEnabled = false
+    @Published var availableFocusModes: [FocusMode] = []
     
-    private let focusStateCenter = FocusStateCenter.shared
-    private let notificationService = NotificationService.shared
+    private let store = ManagedSettingsStore()
+    private let center = AuthorizationCenter.shared
     
     enum FocusStatus {
-        case unknown
         case available
         case unavailable
+        case denied
         case restricted
     }
     
-    struct FocusMode: Identifiable, Hashable {
-        let id: String
+    struct FocusMode: Identifiable {
+        let id = UUID()
         let name: String
         let icon: String
-        let isActive: Bool
-        let allowsNotifications: Bool
-        let allowsCalls: Bool
-        let allowsMessages: Bool
-        let allowsApps: Bool
+        var isActive: Bool
     }
     
     private init() {
-        setupFocusModeMonitoring()
+        checkAuthorizationStatus()
         loadAvailableFocusModes()
     }
     
-    // MARK: - Focus Mode Monitoring
-    
-    private func setupFocusModeMonitoring() {
-        // Monitor focus state changes
-        focusStateCenter.addObserver(self) { [weak self] focusState in
-            DispatchQueue.main.async {
-                self?.handleFocusStateChange(focusState)
-            }
-        }
-        
-        // Check initial focus state
-        checkCurrentFocusState()
-    }
-    
-    private func handleFocusStateChange(_ focusState: FocusState) {
-        isFocusModeEnabled = focusState.isFocused
-        
-        // Update available focus modes
-        loadAvailableFocusModes()
-        
-        // Handle app-specific focus mode logic
-        if isFocusModeEnabled {
-            handleFocusModeActivated(focusState)
-        } else {
-            handleFocusModeDeactivated()
-        }
-    }
-    
-    private func checkCurrentFocusState() {
-        Task {
-            do {
-                let focusState = try await focusStateCenter.requestAuthorization(for: .individual)
-                await MainActor.run {
-                    self.currentFocusStatus = focusState == .authorized ? .available : .restricted
-                    self.isFocusModeEnabled = focusState == .authorized
-                }
-            } catch {
-                await MainActor.run {
-                    self.currentFocusStatus = .unavailable
-                    self.isFocusModeEnabled = false
-                }
-            }
-        }
-    }
-    
-    // MARK: - Focus Mode Management
-    
-    func requestFocusModeAccess() async -> Bool {
+    func requestFocusModeAccess() async {
         do {
-            let status = try await focusStateCenter.requestAuthorization(for: .individual)
+            let status = try await center.requestAuthorization(for: .individual)
+            
             await MainActor.run {
-                self.currentFocusStatus = status == .authorized ? .available : .restricted
+                switch status {
+                case .approved:
+                    currentFocusStatus = .available
+                case .denied:
+                    currentFocusStatus = .denied
+                case .notDetermined:
+                    currentFocusStatus = .unavailable
+                @unknown default:
+                    currentFocusStatus = .unavailable
+                }
             }
-            return status == .authorized
         } catch {
+            print("Error requesting Focus Mode access: \(error)")
             await MainActor.run {
-                self.currentFocusStatus = .unavailable
+                currentFocusStatus = .unavailable
             }
-            return false
         }
     }
     
-    func activateFocusMode(for preset: Preset) async {
+    func checkAuthorizationStatus() {
+        Task {
+            let status = await center.authorizationStatus
+            
+            await MainActor.run {
+                switch status {
+                case .approved:
+                    currentFocusStatus = .available
+                case .denied:
+                    currentFocusStatus = .denied
+                case .notDetermined:
+                    currentFocusStatus = .unavailable
+                case .restricted:
+                    currentFocusStatus = .restricted
+                @unknown default:
+                    currentFocusStatus = .unavailable
+                }
+            }
+        }
+    }
+    
+    func activateFocusMode() async {
         guard currentFocusStatus == .available else { return }
         
         do {
-            // Create focus mode intent
-            let intent = INFocusStatusCenterIntent()
-            intent.focusStatus = .focused
+            // Create a focus mode configuration
+            let configuration = FocusModeConfiguration()
             
-            // Set focus mode duration based on preset
-            let totalDuration = TimeInterval(preset.workDuration * preset.rounds + preset.shortBreakDuration * (preset.rounds - 1) + preset.longBreakDuration)
+            // Apply the configuration
+            try await applyFocusModeConfiguration(configuration)
             
-            // Schedule focus mode deactivation
-            let deactivationDate = Date().addingTimeInterval(totalDuration)
-            
-            // Set focus mode parameters
-            intent.focusStatus = .focused
-            intent.focusStatusDescription = "Lumen Focus Session - \(preset.name)"
-            
-            // Request focus mode activation
-            try await focusStateCenter.requestAuthorization(for: .individual)
-            
-            // Schedule automatic deactivation
-            scheduleFocusModeDeactivation(at: deactivationDate)
-            
-            // Update UI
             await MainActor.run {
-                self.isFocusModeEnabled = true
+                isFocusModeEnabled = true
             }
-            
         } catch {
-            print("Failed to activate focus mode: \(error)")
+            print("Error activating Focus Mode: \(error)")
         }
     }
     
     func deactivateFocusMode() async {
-        guard currentFocusStatus == .available else { return }
-        
         do {
-            // Create deactivation intent
-            let intent = INFocusStatusCenterIntent()
-            intent.focusStatus = .unfocused
+            // Remove focus mode restrictions
+            store.shield.applications = .none()
+            store.shield.applicationCategories = .none()
+            store.shield.webContent = .none()
             
-            // Request focus mode deactivation
-            try await focusStateCenter.requestAuthorization(for: .individual)
-            
-            // Update UI
             await MainActor.run {
-                self.isFocusModeEnabled = false
+                isFocusModeEnabled = false
             }
-            
         } catch {
-            print("Failed to deactivate focus mode: \(error)")
+            print("Error deactivating Focus Mode: \(error)")
         }
     }
     
-    // MARK: - Focus Mode Scheduling
-    
-    func scheduleFocusMode(at date: Date, duration: TimeInterval, preset: Preset) {
-        // Schedule focus mode activation
-        let activationDate = date
-        let deactivationDate = activationDate.addingTimeInterval(duration)
+    private func applyFocusModeConfiguration(_ configuration: FocusModeConfiguration) async throws {
+        // Apply application restrictions
+        if configuration.blockSocialMedia {
+            store.shield.applicationCategories = .all()
+        }
         
-        // Schedule activation notification
-        notificationService.scheduleFocusModeReminder(at: activationDate)
+        // Apply web content restrictions
+        if configuration.blockDistractingWebsites {
+            store.shield.webContent = .all()
+        }
         
-        // Schedule automatic deactivation
-        scheduleFocusModeDeactivation(at: deactivationDate)
-        
-        // Store focus mode schedule
-        storeFocusModeSchedule(activationDate: activationDate, deactivationDate: deactivationDate, preset: preset)
-    }
-    
-    private func scheduleFocusModeDeactivation(at date: Date) {
-        let content = UNMutableNotificationContent()
-        content.title = "Focus Session Complete"
-        content.body = "Time to take a break and reflect on your progress"
-        content.sound = .default
-        content.categoryIdentifier = "FOCUS_COMPLETE"
-        
-        let trigger = UNCalendarNotificationTrigger(
-            dateMatching: Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date),
-            repeats: false
-        )
-        
-        let request = UNNotificationRequest(
-            identifier: "focus-deactivation-\(UUID().uuidString)",
-            content: content,
-            trigger: trigger
-        )
-        
-        UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
-                print("Error scheduling focus deactivation: \(error)")
-            }
+        // Apply notification restrictions
+        if configuration.blockNotifications {
+            // Note: This requires additional permissions and setup
+            print("Notification blocking requires additional setup")
         }
     }
-    
-    // MARK: - Focus Mode Integration
-    
-    private func handleFocusModeActivated(_ focusState: FocusState) {
-        // Adjust app behavior when focus mode is active
-        adjustAppBehaviorForFocusMode()
-        
-        // Schedule focus mode completion notification
-        scheduleFocusModeCompletionNotification()
-        
-        // Update app appearance for focus mode
-        updateAppAppearanceForFocusMode()
-    }
-    
-    private func handleFocusModeDeactivated() {
-        // Restore normal app behavior
-        restoreNormalAppBehavior()
-        
-        // Update app appearance
-        updateAppAppearanceForNormalMode()
-    }
-    
-    private func adjustAppBehaviorForFocusMode() {
-        // Reduce notification frequency
-        notificationService.cancelAllNotifications()
-        
-        // Schedule only essential notifications
-        scheduleEssentialNotifications()
-        
-        // Enable do not disturb mode for audio
-        AudioService.shared.enableDoNotDisturb()
-    }
-    
-    private func restoreNormalAppBehavior() {
-        // Restore normal notification behavior
-        notificationService.setupNotificationCategories()
-        
-        // Disable do not disturb mode
-        AudioService.shared.disableDoNotDisturb()
-    }
-    
-    private func scheduleEssentialNotifications() {
-        // Only schedule critical notifications during focus mode
-        // Such as session completion or emergency alerts
-    }
-    
-    private func updateAppAppearanceForFocusMode() {
-        // Update app appearance to be more minimal during focus mode
-        // This could include reducing animations, changing color scheme, etc.
-    }
-    
-    private func updateAppAppearanceForNormalMode() {
-        // Restore normal app appearance
-    }
-    
-    // MARK: - Focus Mode Analytics
-    
-    func trackFocusModeUsage(duration: TimeInterval, preset: Preset) {
-        // Track how long focus mode was active
-        // This can be used for analytics and insights
-        
-        let focusSession = FocusSession(
-            startTime: Date(),
-            duration: duration,
-            preset: preset.name,
-            wasCompleted: true
-        )
-        
-        // Store focus session data
-        storeFocusSession(focusSession)
-    }
-    
-    // MARK: - Focus Mode Settings
-    
-    func updateFocusModeSettings() {
-        // Update focus mode settings based on user preferences
-        // This could include notification preferences, app restrictions, etc.
-    }
-    
-    // MARK: - Helper Methods
     
     private func loadAvailableFocusModes() {
-        // Load available focus modes from system
-        // This would typically involve querying the system for available focus modes
-        
         availableFocusModes = [
-            FocusMode(id: "work", name: "Work", icon: "💼", isActive: false, allowsNotifications: false, allowsCalls: false, allowsMessages: false, allowsApps: true),
-            FocusMode(id: "personal", name: "Personal", icon: "🏠", isActive: false, allowsNotifications: true, allowsCalls: true, allowsMessages: true, allowsApps: true),
-            FocusMode(id: "sleep", name: "Sleep", icon: "😴", isActive: false, allowsNotifications: false, allowsCalls: false, allowsMessages: false, allowsApps: false)
+            FocusMode(name: "Deep Work", icon: "brain.head.profile", isActive: false),
+            FocusMode(name: "Study", icon: "book", isActive: false),
+            FocusMode(name: "Creative", icon: "paintbrush", isActive: false),
+            FocusMode(name: "Exercise", icon: "figure.run", isActive: false)
         ]
     }
     
-    private func storeFocusModeSchedule(activationDate: Date, deactivationDate: Date, preset: Preset) {
-        // Store focus mode schedule in UserDefaults or Core Data
-        let schedule = FocusModeSchedule(
-            activationDate: activationDate,
-            deactivationDate: deactivationDate,
-            preset: preset.name,
-            isActive: false
-        )
+    func toggleFocusMode(_ mode: FocusMode) {
+        guard let index = availableFocusModes.firstIndex(where: { $0.id == mode.id }) else { return }
         
-        // Save to UserDefaults for now
-        if let encoded = try? JSONEncoder().encode(schedule) {
-            UserDefaults.standard.set(encoded, forKey: "focusModeSchedule")
+        if availableFocusModes[index].isActive {
+            Task {
+                await deactivateFocusMode()
+            }
+        } else {
+            Task {
+                await activateFocusMode()
+            }
+        }
+        
+        availableFocusModes[index].isActive.toggle()
+    }
+    
+    func scheduleFocusMode(startTime: Date, endTime: Date, mode: FocusMode) async {
+        guard currentFocusStatus == .available else { return }
+        
+        do {
+            // Create a scheduled focus mode
+            let schedule = DeviceActivitySchedule(
+                intervalStart: DateComponents(hour: Calendar.current.component(.hour, from: startTime),
+                                           minute: Calendar.current.component(.minute, from: startTime)),
+                intervalEnd: DateComponents(hour: Calendar.current.component(.hour, from: endTime),
+                                         minute: Calendar.current.component(.minute, from: endTime)),
+                repeats: true
+            )
+            
+            // Apply the schedule
+            try await applyScheduledFocusMode(schedule, mode: mode)
+            
+        } catch {
+            print("Error scheduling Focus Mode: \(error)")
         }
     }
     
-    private func storeFocusSession(_ session: FocusSession) {
-        // Store focus session data
-        if let encoded = try? JSONEncoder().encode(session) {
-            UserDefaults.standard.set(encoded, forKey: "focusSession-\(session.startTime.timeIntervalSince1970)")
-        }
+    private func applyScheduledFocusMode(_ schedule: DeviceActivitySchedule, mode: FocusMode) async throws {
+        // This would implement the logic to apply scheduled focus modes
+        // For now, just log the schedule
+        print("Scheduled Focus Mode '\(mode.name)' from \(schedule.intervalStart) to \(schedule.intervalEnd)")
     }
+}
+
+// MARK: - Focus Mode Configuration
+
+struct FocusModeConfiguration {
+    var blockSocialMedia: Bool = true
+    var blockDistractingWebsites: Bool = true
+    var blockNotifications: Bool = false
+    var allowCalls: Bool = true
+    var allowMessages: Bool = false
     
-    private func scheduleFocusModeCompletionNotification() {
-        // Schedule notification for when focus mode should complete
-        // This helps users stay on track with their focus sessions
-    }
-}
-
-// MARK: - Data Models
-
-struct FocusSession: Codable {
-    let startTime: Date
-    let duration: TimeInterval
-    let preset: String
-    let wasCompleted: Bool
-}
-
-struct FocusModeSchedule: Codable {
-    let activationDate: Date
-    let deactivationDate: Date
-    let preset: String
-    let isActive: Bool
+    static let deepWork = FocusModeConfiguration(
+        blockSocialMedia: true,
+        blockDistractingWebsites: true,
+        blockNotifications: true,
+        allowCalls: false,
+        allowMessages: false
+    )
+    
+    static let study = FocusModeConfiguration(
+        blockSocialMedia: true,
+        blockDistractingWebsites: true,
+        blockNotifications: false,
+        allowCalls: true,
+        allowMessages: false
+    )
+    
+    static let creative = FocusModeConfiguration(
+        blockSocialMedia: false,
+        blockDistractingWebsites: false,
+        blockNotifications: true,
+        allowCalls: false,
+        allowMessages: false
+    )
 }

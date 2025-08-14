@@ -31,7 +31,7 @@ struct AddTaskView: View {
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             .padding(.horizontal, 16)
                             .padding(.vertical, 12)
-                            .background(Color.surface)
+                            .background(Color(.systemGray6))
                             .cornerRadius(12)
                     }
                     
@@ -76,10 +76,10 @@ struct AddTaskView: View {
                         LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 8), spacing: 12) {
                             ForEach(availableIcons, id: \.self) { icon in
                                 Button(action: { selectedIcon = icon }) {
-                                    ZStack {
-                                        RoundedRectangle(cornerRadius: 12)
-                                            .fill(selectedIcon == icon ? Color.accentPrimary : Color.surface)
-                                            .frame(width: 44, height: 44)
+                                                                            ZStack {
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .fill(selectedIcon == icon ? Color.accentPrimary : Color(.systemGray6))
+                                                .frame(width: 44, height: 44)
                                         
                                         Image(systemName: icon)
                                             .font(.title3)
@@ -100,12 +100,12 @@ struct AddTaskView: View {
                         
                         // Add new tag
                         HStack {
-                            TextField("Add tag", text: $newTag)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 8)
-                                .background(Color.surface)
-                                .cornerRadius(8)
+                                                    TextField("Add tag", text: $newTag)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 8)
+                            .background(Color(.systemGray6))
+                            .cornerRadius(8)
                             
                             Button("Add") {
                                 if !newTag.isEmpty {
@@ -143,7 +143,7 @@ struct AddTaskView: View {
                 }
                 .padding(24)
             }
-            .background(Color.background)
+            .background(Color(.systemBackground))
             .navigationTitle("New Task")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

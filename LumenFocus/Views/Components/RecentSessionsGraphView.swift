@@ -30,7 +30,7 @@ struct RecentSessionsGraphView: View {
                                     startPoint: .bottom,
                                     endPoint: .top
                                 ) :
-                                Color.surface.opacity(0.3)
+                                Color(.systemGray6).opacity(0.3)
                             )
                             .frame(
                                 width: 24,
@@ -88,10 +88,10 @@ struct RecentSessionsGraphView: View {
         .padding(24)
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(Color.surface)
+                .fill(Color(.systemGray6))
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color.surface.opacity(0.3), lineWidth: 1)
+                        .stroke(Color(.systemGray6).opacity(0.3), lineWidth: 1)
                 )
         )
     }
@@ -120,6 +120,6 @@ struct SessionData {
 
 #Preview {
     RecentSessionsGraphView()
-        .background(Color.background)
+        .background(Color(.systemBackground))
         .padding()
 }

@@ -2,7 +2,6 @@ import SwiftUI
 
 struct ProgressBarView: View {
     let progress: Double
-    let phase: SessionPhase
     
     @State private var isAnimating = false
     
@@ -81,29 +80,11 @@ struct ProgressBarView: View {
     }
     
     private var gradientColors: [Color] {
-        switch phase {
-        case .work:
-            return [Color.accentPrimary, Color.accentSecondary]
-        case .shortBreak:
-            return [Color.accentSecondary, Color.success]
-        case .longBreak:
-            return [Color.success, Color.warning]
-        case .paused:
-            return [Color.surface, Color.surface]
-        }
+        return [Color.accentPrimary, Color.accentSecondary]
     }
     
     private var primaryColor: Color {
-        switch phase {
-        case .work:
-            return Color.accentPrimary
-        case .shortBreak:
-            return Color.accentSecondary
-        case .longBreak:
-            return Color.success
-        case .paused:
-            return Color.surface
-        }
+        return Color.accentPrimary
     }
 }
 
