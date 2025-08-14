@@ -11,6 +11,10 @@ struct SettingsView: View {
     @AppStorage("dontInterruptMusic") private var dontInterruptMusic = true
     @AppStorage("soundVolume") private var soundVolume = 0.7
     
+    @StateObject private var cloudKitService = CloudKitService.shared
+    @StateObject private var focusModeService = FocusModeService.shared
+    @StateObject private var coreDataManager = CoreDataManager.shared
+    
     var body: some View {
         NavigationView {
             List {
@@ -35,6 +39,15 @@ struct SettingsView: View {
                     if notificationsEnabled {
                         Toggle("Focus mode integration", isOn: $focusModeIntegration)
                         Toggle("Don't interrupt music", isOn: $dontInterruptMusic)
+                        
+                        // Smart notification settings
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Smart scheduling")
+                                .font(.headline)
+                            Text("Automatically schedule notifications based on your focus patterns")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
                     }
                 }
                 
@@ -62,6 +75,115 @@ struct SettingsView: View {
                         Text("Dark").tag("dark")
                     }
                     .pickerStyle(.segmented)
+                }
+                
+                // CloudKit & Sync
+                Section("CloudKit & Sync") {
+                    HStack {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("iCloud Status")
+                                .font(.headline)
+                            Text(cloudKitService.isSignedInToiCloud ? "Connected" : "Not Connected")
+                                .font(.caption)
+                                .foregroundColor(cloudKitService.isSignedInToiCloud ? .green : .red)
+                        }
+                        Spacer()
+                        
+                        if cloudKitService.isSignedInToiCloud {
+                            Button("Sync Now") {
+                                Task {
+                                    await cloudKitService.manualSync()
+                                }
+                            }
+                            .buttonStyle(.borderedProminent)
+                            .disabled(cloudKitService.syncStatus == .syncing)
+                        }
+                    }
+                    
+                    if cloudKitService.isSignedInToiCloud {
+                        HStack {
+                            Text("Last Sync")
+                            Spacer()
+                            if let lastSync = cloudKitService.lastSyncDate {
+                                Text(lastSync, style: .relative)
+                                    .foregroundColor(.secondary)
+                            } else {
+                                Text("Never")
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                        
+                        HStack {
+                            Text("Sync Status")
+                            Spacer()
+                            switch cloudKitService.syncStatus {
+                            case .idle:
+                                Text("Idle")
+                                    .foregroundColor(.secondary)
+                            case .syncing:
+                                HStack {
+                                    ProgressView()
+                                        .scaleEffect(0.8)
+                                    Text("Syncing...")
+                                        .foregroundColor(.secondary)
+                                }
+                            case .completed:
+                                Text("Completed")
+                                    .foregroundColor(.green)
+                            case .failed(let error):
+                                Text("Failed")
+                                    .foregroundColor(.red)
+                            }
+                        }
+                    }
+                }
+                
+                // Focus Mode
+                Section("Focus Mode") {
+                    HStack {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Focus Mode Status")
+                                .font(.headline)
+                            Text(focusModeService.isFocusModeEnabled ? "Active" : "Inactive")
+                                .font(.caption)
+                                .foregroundColor(focusModeService.isFocusModeEnabled ? .green : .orange)
+                        }
+                        Spacer()
+                        
+                        if focusModeService.currentFocusStatus == .available {
+                            Button(focusModeService.isFocusModeEnabled ? "Deactivate" : "Activate") {
+                                Task {
+                                    if focusModeService.isFocusModeEnabled {
+                                        await focusModeService.deactivateFocusMode()
+                                    } else {
+                                        await focusModeService.requestFocusModeAccess()
+                                    }
+                                }
+                            }
+                            .buttonStyle(.borderedProminent)
+                        } else {
+                            Button("Request Access") {
+                                Task {
+                                    await focusModeService.requestFocusModeAccess()
+                                }
+                            }
+                            .buttonStyle(.bordered)
+                        }
+                    }
+                    
+                    if focusModeService.currentFocusStatus == .available {
+                        ForEach(focusModeService.availableFocusModes) { mode in
+                            HStack {
+                                Text(mode.icon)
+                                Text(mode.name)
+                                Spacer()
+                                if mode.isActive {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundColor(.green)
+                                }
+                            }
+                        }
+                    }
                 }
                 
                 // Data & Privacy
@@ -123,8 +245,9 @@ struct SettingsView: View {
     }
     
     private func backupToICloud() {
-        // This would integrate with CloudKit in a real implementation
-        print("iCloud backup functionality would be implemented here")
+        Task {
+            await cloudKitService.syncToCloud()
+        }
     }
     
     private func openPrivacyPolicy() {

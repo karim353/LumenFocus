@@ -21,6 +21,8 @@ class TimerViewModel: ObservableObject {
     
     private let coreDataManager = CoreDataManager.shared
     private let liveActivityManager = LiveActivityManager.shared
+    private let notificationService = NotificationService.shared
+    private let focusModeService = FocusModeService.shared
     
     init() {
         setupHaptics()
@@ -53,6 +55,14 @@ class TimerViewModel: ObservableObject {
             currentRound: currentRound,
             totalRounds: totalRounds
         )
+        
+        // Activate Focus Mode if enabled
+        Task {
+            await focusModeService.activateFocusMode(for: currentPreset)
+        }
+        
+        // Setup smart notifications
+        setupSmartNotifications()
         
         triggerHaptic(.success)
     }
@@ -245,6 +255,33 @@ class TimerViewModel: ObservableObject {
         } catch {
             print("Failed to play haptic: \(error)")
         }
+    }
+    
+    // MARK: - Smart Notifications
+    
+    private func setupSmartNotifications() {
+        guard let sessionStartDate = sessionStartDate else { return }
+        
+        // Create a temporary session for notification scheduling
+        let tempSession = coreDataManager.createSession(
+            startedAt: sessionStartDate,
+            completedAt: nil,
+            duration: 0,
+            currentPhase: currentPhase.rawValue,
+            presetName: currentPreset.name,
+            rounds: Int16(totalRounds),
+            isCompleted: false,
+            task: selectedTask
+        )
+        
+        // Schedule smart notifications
+        notificationService.scheduleSmartNotifications(for: tempSession)
+    }
+    
+    // MARK: - Focus Mode Integration
+    
+    func deactivateFocusMode() async {
+        await focusModeService.deactivateFocusMode()
     }
 }
 

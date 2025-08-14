@@ -1,8 +1,11 @@
 import CoreData
 import Foundation
+import CloudKit
 
 class CoreDataManager: ObservableObject {
     static let shared = CoreDataManager()
+    
+    private let cloudKitService = CloudKitService.shared
     
     private init() {}
     
@@ -25,6 +28,10 @@ class CoreDataManager: ObservableObject {
         if context.hasChanges {
             do {
                 try context.save()
+                // Trigger CloudKit sync after successful save
+                Task {
+                    await cloudKitService.syncToCloud()
+                }
             } catch {
                 print("Error saving context: \(error)")
             }
@@ -174,5 +181,27 @@ class CoreDataManager: ObservableObject {
             plant.waterLevel = max(0, plant.waterLevel - 20)
             save()
         }
+    }
+    
+    // MARK: - CloudKit Integration
+    
+    func syncWithCloud() async {
+        await cloudKitService.manualSync()
+    }
+    
+    func checkForCloudUpdates() async {
+        await cloudKitService.checkForUpdates()
+    }
+    
+    var isCloudKitAvailable: Bool {
+        cloudKitService.isSignedInToiCloud
+    }
+    
+    var cloudKitSyncStatus: CloudKitService.SyncStatus {
+        cloudKitService.syncStatus
+    }
+    
+    var lastCloudKitSync: Date? {
+        cloudKitService.lastSyncDate
     }
 }
