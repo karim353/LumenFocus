@@ -50,6 +50,9 @@ struct FocusView: View {
                 
                 // Preset Switcher
                 PresetSwitcherView(selectedPreset: $timerViewModel.selectedPreset)
+                    .onChange(of: timerViewModel.selectedPreset) { newPreset in
+                        timerViewModel.setPreset(newPreset)
+                    }
                 
                 Spacer()
             }

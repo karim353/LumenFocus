@@ -70,7 +70,7 @@ struct PresetCardView: View {
                     .fill(
                         isSelected ? 
                         LinearGradient(
-                            colors: [Color.accentPrimary, Color.accentSecondary],
+                            colors: [Color.purple, Color.cyan],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         ) :
@@ -84,12 +84,12 @@ struct PresetCardView: View {
                         lineWidth: 1
                     )
             )
-            .shadow(
-                color: isSelected ? Color.accentPrimary.opacity(0.3) : Color.clear,
-                radius: 12,
-                x: 0,
-                y: 6
-            )
+                                        .shadow(
+                                color: isSelected ? Color.purple.opacity(0.3) : Color.clear,
+                                radius: 12,
+                                x: 0,
+                                y: 6
+                            )
             .scaleEffect(isSelected ? 1.05 : 1.0)
         }
         .buttonStyle(PlainButtonStyle())

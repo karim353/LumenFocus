@@ -8,6 +8,15 @@
         <attribute name="plantType" optional="YES" attributeType="String"/>
         <attribute name="waterLevel" optional="YES" attributeType="Integer 16" defaultValueString="100" usesScalarValueType="YES"/>
     </entity>
+    <entity name="Preset" representedClassName="Preset" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="longBreakDuration" optional="YES" attributeType="Double" defaultValueString="900.0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="rounds" optional="YES" attributeType="Integer 16" defaultValueString="4" usesScalarValueType="YES"/>
+        <attribute name="shortBreakDuration" optional="YES" attributeType="Double" defaultValueString="300.0" usesScalarValueType="YES"/>
+        <attribute name="workDuration" optional="YES" attributeType="Double" defaultValueString="1500.0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="Session" representedClassName="Session" syncable="YES" codeGenerationType="class">
         <attribute name="completedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="currentPhase" optional="YES" attributeType="String"/>

@@ -84,14 +84,30 @@ struct StatisticsView: View {
     
     private func loadSampleData() {
         let now = Date()
-        let presetId = UUID()
-        sessions = [
-            Session(startDate: now.addingTimeInterval(-3600), phase: .work, presetId: presetId),
-            Session(startDate: now.addingTimeInterval(-7200), phase: .work, presetId: presetId),
-            Session(startDate: now.addingTimeInterval(-10800), phase: .shortBreak, presetId: presetId),
-            Session(startDate: now.addingTimeInterval(-14400), phase: .work, presetId: presetId),
-            Session(startDate: now.addingTimeInterval(-18000), phase: .work, presetId: presetId)
-        ]
+        // Создаем тестовые сессии для демонстрации
+        // В реальном приложении эти данные будут загружаться из Core Data
+        let session1 = Session()
+        session1.id = UUID()
+        session1.startedAt = now.addingTimeInterval(-3600)
+        session1.duration = 1500
+        session1.currentPhase = "work"
+        session1.isCompleted = true
+        
+        let session2 = Session()
+        session2.id = UUID()
+        session2.startedAt = now.addingTimeInterval(-7200)
+        session2.duration = 1800
+        session2.currentPhase = "work"
+        session2.isCompleted = true
+        
+        let session3 = Session()
+        session3.id = UUID()
+        session3.startedAt = now.addingTimeInterval(-10800)
+        session3.duration = 1200
+        session3.currentPhase = "shortBreak"
+        session3.isCompleted = true
+        
+        sessions = [session1, session2, session3]
     }
 }
 

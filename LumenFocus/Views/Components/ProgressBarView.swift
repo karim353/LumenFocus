@@ -80,11 +80,11 @@ struct ProgressBarView: View {
     }
     
     private var gradientColors: [Color] {
-        return [Color.accentPrimary, Color.accentSecondary]
+        return [Color.purple, Color.cyan]
     }
     
     private var primaryColor: Color {
-        return Color.accentPrimary
+        return Color.purple
     }
 }
 

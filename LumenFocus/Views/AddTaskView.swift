@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct AddTaskView: View {
-    let onSave: (Task) -> Void
+    let onSave: (String, String, String, [String]) -> Void
     
     @Environment(\.dismiss) private var dismiss
     
@@ -77,9 +77,9 @@ struct AddTaskView: View {
                             ForEach(availableIcons, id: \.self) { icon in
                                 Button(action: { selectedIcon = icon }) {
                                                                             ZStack {
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .fill(selectedIcon == icon ? Color.accentPrimary : Color(.systemGray6))
-                                                .frame(width: 44, height: 44)
+                                                                            RoundedRectangle(cornerRadius: 12)
+                                    .fill(selectedIcon == icon ? Color.purple : Color(.systemGray6))
+                                    .frame(width: 44, height: 44)
                                         
                                         Image(systemName: icon)
                                             .font(.title3)
@@ -155,13 +155,7 @@ struct AddTaskView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
-                        let newTask = Task(
-                            title: title,
-                            color: selectedColor,
-                            icon: selectedIcon,
-                            tags: tags
-                        )
-                        onSave(newTask)
+                        onSave(title, selectedColor.rawValue, selectedIcon, tags)
                         dismiss()
                     }
                     .disabled(title.isEmpty)
@@ -172,5 +166,5 @@ struct AddTaskView: View {
 }
 
 #Preview {
-    AddTaskView { _ in }
+    AddTaskView { _, _, _, _ in }
 }

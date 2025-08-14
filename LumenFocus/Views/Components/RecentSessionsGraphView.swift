@@ -26,7 +26,7 @@ struct RecentSessionsGraphView: View {
                             .fill(
                                 session.completed ? 
                                 LinearGradient(
-                                    colors: [Color.accentPrimary, Color.accentSecondary],
+                                    colors: [Color.purple, Color.cyan],
                                     startPoint: .bottom,
                                     endPoint: .top
                                 ) :
@@ -39,12 +39,12 @@ struct RecentSessionsGraphView: View {
                             .overlay(
                                 RoundedRectangle(cornerRadius: 4)
                                     .stroke(
-                                        session.completed ? Color.accentPrimary.opacity(0.3) : Color.clear,
+                                        session.completed ? Color.purple.opacity(0.3) : Color.clear,
                                         lineWidth: 1
                                     )
                             )
                             .shadow(
-                                color: session.completed ? Color.accentPrimary.opacity(0.2) : Color.clear,
+                                color: session.completed ? Color.purple.opacity(0.2) : Color.clear,
                                 radius: 4,
                                 x: 0,
                                 y: 2
@@ -65,7 +65,7 @@ struct RecentSessionsGraphView: View {
                     Text("\(completedSessions)")
                         .font(.title2)
                         .fontWeight(.semibold)
-                        .foregroundColor(.accentPrimary)
+                        .foregroundColor(.purple)
                     Text("Completed")
                         .font(.caption)
                         .foregroundColor(.secondary)
@@ -77,7 +77,7 @@ struct RecentSessionsGraphView: View {
                     Text("\(totalMinutes) min")
                         .font(.title2)
                         .fontWeight(.semibold)
-                        .foregroundColor(.accentSecondary)
+                        .foregroundColor(.cyan)
                     Text("Total Time")
                         .font(.caption)
                         .foregroundColor(.secondary)

@@ -23,11 +23,11 @@ class TimerViewModel: ObservableObject {
         let totalTime: TimeInterval
         switch currentPhase {
         case .work:
-            totalTime = currentPreset.workDuration
+            totalTime = selectedPreset.workDuration
         case .shortBreak:
-            totalTime = currentPreset.shortBreakDuration
+            totalTime = selectedPreset.shortBreakDuration
         case .longBreak:
-            totalTime = currentPreset.longBreakDuration
+            totalTime = selectedPreset.longBreakDuration
         case .paused:
             totalTime = 1
         }
@@ -37,7 +37,7 @@ class TimerViewModel: ObservableObject {
     private var timer: Timer?
     private var startDate: Date?
     private var pauseOffset: TimeInterval = 0
-    private var currentPreset: Preset = .pomodoro
+    // currentPreset больше не нужен, используем selectedPreset
     private var engine: CHHapticEngine?
     private var sessionStartDate: Date?
     
@@ -47,7 +47,7 @@ class TimerViewModel: ObservableObject {
     
     init() {
         setupHaptics()
-        resetTimer()
+        timeRemaining = selectedPreset.workDuration
     }
     
     deinit {
@@ -68,7 +68,7 @@ class TimerViewModel: ObservableObject {
         stopTimer()
         currentRound = 1
         currentPhase = .work
-        resetTimer()
+        timeRemaining = currentPreset.workDuration
     }
     
     func skipTimer() {
@@ -185,7 +185,7 @@ class TimerViewModel: ObservableObject {
         case .shortBreak, .longBreak:
             currentPhase = .work
             currentRound += 1
-            timeRemaining = currentPreset.workDuration
+            timeRemaining = selectedPreset.workDuration
             
             if currentRound > totalRounds {
                 completeSession()
@@ -218,22 +218,22 @@ class TimerViewModel: ObservableObject {
     private func resetTimer() {
         switch currentPhase {
         case .work:
-            timeRemaining = currentPreset.workDuration
+            timeRemaining = selectedPreset.workDuration
         case .shortBreak:
-            timeRemaining = currentPreset.shortBreakDuration
+            timeRemaining = selectedPreset.shortBreakDuration
         case .longBreak:
-            timeRemaining = currentPreset.longBreakDuration
+            timeRemaining = selectedPreset.longBreakDuration
         case .paused:
             break
         }
     }
     
     func setPreset(_ preset: Preset) {
-        currentPreset = preset
+        selectedPreset = preset
         totalRounds = preset.rounds
         currentRound = 1
         currentPhase = .work
-        resetTimer()
+        timeRemaining = preset.workDuration
     }
     
     // MARK: - Haptics
@@ -273,7 +273,7 @@ class TimerViewModel: ObservableObject {
         guard let sessionStartDate = sessionStartDate else { return }
         
         // Schedule focus complete notification
-        let focusDuration = currentPreset.workDuration
+        let focusDuration = selectedPreset.workDuration
         notificationService.scheduleFocusCompleteNotification(in: focusDuration)
     }
     

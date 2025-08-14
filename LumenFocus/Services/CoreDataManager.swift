@@ -36,11 +36,10 @@ class CoreDataManager: ObservableObject {
         let task = Task(context: context)
         task.id = UUID()
         task.title = title
-        task.taskDescription = description
         task.color = color
         task.icon = icon
         task.createdAt = Date()
-        task.isCompleted = false
+        task.tags = []
         
         save()
         return task
@@ -70,9 +69,10 @@ class CoreDataManager: ObservableObject {
         session.id = UUID()
         session.startedAt = startedAt
         session.duration = duration
-        session.type = type
+        session.currentPhase = type
         session.task = task
         session.isCompleted = true
+        session.rounds = 1
         
         save()
         return session
@@ -101,9 +101,10 @@ class CoreDataManager: ObservableObject {
         let preset = Preset(context: context)
         preset.id = UUID()
         preset.name = name
-        preset.focusTime = focusTime
-        preset.breakTime = breakTime
-        preset.longBreakTime = longBreakTime
+        preset.workDuration = focusTime
+        preset.shortBreakDuration = breakTime
+        preset.longBreakDuration = longBreakTime
+        preset.rounds = 4
         preset.createdAt = Date()
         
         save()
