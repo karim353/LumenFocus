@@ -7,81 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A1234567890123456789012A /* LumenFocusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012B /* LumenFocusApp.swift */; };
-		A1234567890123456789012C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012D /* ContentView.swift */; };
-		A1234567890123456789012E /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012F /* Preset.swift */; };
-		A1234567890123456789012G /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012H /* Session.swift */; };
-		A1234567890123456789012I /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012J /* Task.swift */; };
-		A1234567890123456789012K /* AppIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012L /* AppIntents.swift */; };
-		A1234567890123456789012M /* AudioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012N /* AudioService.swift */; };
-		A1234567890123456789012O /* CloudKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012P /* CloudKitService.swift */; };
-		A1234567890123456789012Q /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012R /* CoreDataManager.swift */; };
-		A1234567890123456789012S /* FocusModeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012T /* FocusModeService.swift */; };
-		A1234567890123456789012U /* LiveActivityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012V /* LiveActivityManager.swift */; };
-		A1234567890123456789012W /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012X /* NotificationService.swift */; };
-		A1234567890123456789012Y /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012Z /* TimerViewModel.swift */; };
-		A1234567890123456789013A /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789013B /* AddTaskView.swift */; };
-		A1234567890123456789013C /* PresetSwitcherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789013D /* PresetSwitcherView.swift */; };
-		A1234567890123456789013E /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789013F /* ProgressBarView.swift */; };
-		A1234567890123456789013G /* RecentSessionsGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789013H /* RecentSessionsGraphView.swift */; };
-		A1234567890123456789013I /* TimerCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789013J /* TimerCardView.swift */; };
-		A1234567890123456789013K /* FocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789013L /* FocusView.swift */; };
-		A1234567890123456789013M /* GardenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789013N /* GardenView.swift */; };
-		A1234567890123456789013O /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789013P /* SettingsView.swift */; };
-		A1234567890123456789013Q /* StandByView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789013R /* StandByView.swift */; };
-		A1234567890123456789013S /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789013T /* StatisticsView.swift */; };
-		A1234567890123456789013U /* TasksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789013V /* TasksView.swift */; };
-		A1234567890123456789013W /* FocusWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789013X /* FocusWidget.swift */; };
-		A1234567890123456789013Y /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789013Z /* Color+Extensions.swift */; };
-		A1234567890123456789014A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789014B /* Localizable.strings */; };
-		A1234567890123456789014C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789014D /* Localizable.strings */; };
-		A1234567890123456789014E /* AccentColor.colorset in Resources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789014F /* AccentColor.colorset */; };
-		A1234567890123456789014G /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789014H /* AppIcon.appiconset */; };
+		87FD8AC7F72AADA7B389EAAF /* LumenFocusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E920BD05452BCC1F66BCAB /* LumenFocusApp.swift */; };
+		752F826C6EFE315E94C54545 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F869A50DF0684F79265A22 /* ContentView.swift */; };
+		A54204AADDA44DB988292209 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C322CC54F3AE909ED5027B4D /* Assets.xcassets */; };
+		38BB4C14AC6B686F06FD35CF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB575F70D4B2915A470AFF1C /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A1234567890123456789012A /* LumenFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LumenFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A1234567890123456789012B /* LumenFocusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LumenFocusApp.swift; sourceTree = "<group>"; };
-		A1234567890123456789012D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		A1234567890123456789012F /* Preset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preset.swift; sourceTree = "<group>"; };
-		A1234567890123456789012H /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
-		A1234567890123456789012J /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
-		A1234567890123456789012L /* AppIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntents.swift; sourceTree = "<group>"; };
-		A1234567890123456789012N /* AudioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioService.swift; sourceTree = "<group>"; };
-		A1234567890123456789012P /* CloudKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitService.swift; sourceTree = "<group>"; };
-		A1234567890123456789012R /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		A1234567890123456789012T /* FocusModeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusModeService.swift; sourceTree = "<group>"; };
-		A1234567890123456789012V /* LiveActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityManager.swift; sourceTree = "<group>"; };
-		A1234567890123456789012X /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
-		A1234567890123456789012Z /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
-		A1234567890123456789013B /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
-		A1234567890123456789013D /* PresetSwitcherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetSwitcherView.swift; sourceTree = "<group>"; };
-		A1234567890123456789013F /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
-		A1234567890123456789013H /* RecentSessionsGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSessionsGraphView.swift; sourceTree = "<group>"; };
-		A1234567890123456789013J /* TimerCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCardView.swift; sourceTree = "<group>"; };
-		A1234567890123456789013L /* FocusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusView.swift; sourceTree = "<group>"; };
-		A1234567890123456789013N /* GardenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardenView.swift; sourceTree = "<group>"; };
-		A1234567890123456789013P /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		A1234567890123456789013R /* StandByView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandByView.swift; sourceTree = "<group>"; };
-		A1234567890123456789013T /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
-		A1234567890123456789013V /* TasksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksView.swift; sourceTree = "<group>"; };
-		A1234567890123456789013W /* FocusWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusWidget.swift; sourceTree = "<group>"; };
-		A1234567890123456789013Y /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
-		A1234567890123456789014A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		A1234567890123456789014B /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		A1234567890123456789014C /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		A1234567890123456789014D /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		A1234567890123456789014E /* AccentColor.colorset */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AccentColor.colorset; sourceTree = "<group>"; };
-		A1234567890123456789014F /* AccentColor.colorset */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AccentColor.colorset; sourceTree = "<group>"; };
-		A1234567890123456789014G /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AppIcon.appiconset; sourceTree = "<group>"; };
-		A1234567890123456789014H /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AppIcon.appiconset; sourceTree = "<group>"; };
-		A1234567890123456789014I /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A1234567890123456789015J /* LumenFocus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LumenFocus.xcdatamodeld; sourceTree = "<group>"; };
-		A1234567890123456789015L /* LumenFocus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LumenFocus.xcdatamodel; sourceTree = "<group>"; };
+		98CEE500ECA06D64FEC06538 /* LumenFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LumenFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13E920BD05452BCC1F66BCAB /* LumenFocusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LumenFocusApp.swift; sourceTree = "<group>"; };
+		55F869A50DF0684F79265A22 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C322CC54F3AE909ED5027B4D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CB575F70D4B2915A470AFF1C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A1234567890123456789014K /* Frameworks */ = {
+		E1B1682A65263B9D9DA267A6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -91,159 +32,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A1234567890123456789014L = {
+		77C61D002DF9C8C5F07410A6 = {
 			isa = PBXGroup;
 			children = (
-				A1234567890123456789014M /* LumenFocus */,
-				A1234567890123456789014N /* Products */,
+				A3D0EEA835F00D4ECCE1508D /* LumenFocus */,
+				A9D51DE3350E915B7ECA40DA /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		A1234567890123456789014M /* LumenFocus */ = {
+		A3D0EEA835F00D4ECCE1508D /* LumenFocus */ = {
 			isa = PBXGroup;
 			children = (
-				A1234567890123456789014O /* Models */,
-				A1234567890123456789014P /* Services */,
-				A1234567890123456789014Q /* ViewModels */,
-				A1234567890123456789014R /* Views */,
-				A1234567890123456789014S /* Widgets */,
-				A1234567890123456789014T /* Extensions */,
-				A1234567890123456789014U /* Resources */,
-				A1234567890123456789014V /* Assets.xcassets */,
-				A1234567890123456789015K /* LumenFocus.xcdatamodel */,
-				A1234567890123456789012B /* LumenFocusApp.swift */,
-				A1234567890123456789012D /* ContentView.swift */,
-				A1234567890123456789014I /* Info.plist */,
+				13E920BD05452BCC1F66BCAB /* LumenFocusApp.swift */,
+				55F869A50DF0684F79265A22 /* ContentView.swift */,
+				C322CC54F3AE909ED5027B4D /* Assets.xcassets */,
+				842B0477304770F2DDCA40A1 /* Preview Content */,
 			);
 			path = LumenFocus;
 			sourceTree = "<group>";
 		};
-		A1234567890123456789014O /* Models */ = {
+		A9D51DE3350E915B7ECA40DA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A1234567890123456789012F /* Preset.swift */,
-				A1234567890123456789012H /* Session.swift */,
-				A1234567890123456789012J /* Task.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		A1234567890123456789014P /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				A1234567890123456789012L /* AppIntents.swift */,
-				A1234567890123456789012N /* AudioService.swift */,
-				A1234567890123456789012P /* CloudKitService.swift */,
-				A1234567890123456789012R /* CoreDataManager.swift */,
-				A1234567890123456789012T /* FocusModeService.swift */,
-				A1234567890123456789012V /* LiveActivityManager.swift */,
-				A1234567890123456789012X /* NotificationService.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		A1234567890123456789014Q /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				A1234567890123456789012Z /* TimerViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		A1234567890123456789014R /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				A1234567890123456789014W /* Components */,
-				A1234567890123456789013B /* AddTaskView.swift */,
-				A1234567890123456789013L /* FocusView.swift */,
-				A1234567890123456789013N /* GardenView.swift */,
-				A1234567890123456789013P /* SettingsView.swift */,
-				A1234567890123456789013R /* StandByView.swift */,
-				A1234567890123456789013T /* StatisticsView.swift */,
-				A1234567890123456789013V /* TasksView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		A1234567890123456789014W /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				A1234567890123456789013D /* PresetSwitcherView.swift */,
-				A1234567890123456789013F /* ProgressBarView.swift */,
-				A1234567890123456789013H /* RecentSessionsGraphView.swift */,
-				A1234567890123456789013J /* TimerCardView.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		A1234567890123456789014S /* Widgets */ = {
-			isa = PBXGroup;
-			children = (
-				A1234567890123456789013X /* FocusWidget.swift */,
-			);
-			path = Widgets;
-			sourceTree = "<group>";
-		};
-		A1234567890123456789014T /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				A1234567890123456789013Z /* Color+Extensions.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		A1234567890123456789014U /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				A1234567890123456789014X /* en.lproj */,
-				A1234567890123456789014Y /* ru.lproj */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
-		A1234567890123456789014X /* en.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				A1234567890123456789014B /* Localizable.strings */,
-			);
-			path = en.lproj;
-			sourceTree = "<group>";
-		};
-		A1234567890123456789014Y /* ru.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				A1234567890123456789014D /* Localizable.strings */,
-			);
-			path = ru.lproj;
-			sourceTree = "<group>";
-		};
-		A1234567890123456789014V /* Assets.xcassets */ = {
-			isa = PBXGroup;
-			children = (
-				A1234567890123456789014F /* AccentColor.colorset */,
-				A1234567890123456789014H /* AppIcon.appiconset */,
-			);
-			path = "Assets.xcassets";
-			sourceTree = "<group>";
-		};
-		A1234567890123456789014N /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A1234567890123456789012A /* LumenFocus.app */,
+				98CEE500ECA06D64FEC06538 /* LumenFocus.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		842B0477304770F2DDCA40A1 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				CB575F70D4B2915A470AFF1C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A1234567890123456789014Z /* LumenFocus */ = {
+		F2DBE4DD64258537210091DD /* LumenFocus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A1234567890123456789015A /* Build configuration list for PBXNativeTarget "LumenFocus" */;
+			buildConfigurationList = 66FBA338AACE1CA3D2FFF664 /* Build configuration list for PBXNativeTarget "LumenFocus" */;
 			buildPhases = (
-				A1234567890123456789015B /* Sources */,
-				A1234567890123456789014K /* Frameworks */,
-				A1234567890123456789015C /* Resources */,
+				A22EC595EEE5C5227B546F59 /* Sources */,
+				E1B1682A65263B9D9DA267A6 /* Frameworks */,
+				4446EF34A22E197204B0129A /* Resources */,
 			);
 			buildRules = (
 			);
@@ -251,25 +84,25 @@
 			);
 			name = LumenFocus;
 			productName = LumenFocus;
-			productReference = A1234567890123456789012A /* LumenFocus.app */;
+			productReference = 98CEE500ECA06D64FEC06538 /* LumenFocus.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		A1234567890123456789015D /* Project object */ = {
+		8D78E23E95B6EE9F93FC76A5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					A1234567890123456789014Z = {
+					F2DBE4DD64258537210091DD = {
 						CreatedOnToolsVersion = 15.0;
 					};
 				};
 			};
-			buildConfigurationList = A1234567890123456789015E /* Build configuration list for PBXProject "LumenFocus" */;
+			buildConfigurationList = 84432BE5286A07712880E74F /* Build configuration list for PBXProject "LumenFocus" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -278,68 +111,42 @@
 				Base,
 				ru,
 			);
-			mainGroup = A1234567890123456789014L;
-			productRefGroup = A1234567890123456789014N /* Products */;
+			mainGroup = 77C61D002DF9C8C5F07410A6;
+			productRefGroup = A9D51DE3350E915B7ECA40DA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A1234567890123456789014Z /* LumenFocus */,
+				F2DBE4DD64258537210091DD /* LumenFocus */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A1234567890123456789015C /* Resources */ = {
+		4446EF34A22E197204B0129A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1234567890123456789014A /* Localizable.strings in Resources */,
-				A1234567890123456789014C /* Localizable.strings in Resources */,
-				A1234567890123456789014E /* AccentColor.colorset in Resources */,
-				A1234567890123456789014G /* AppIcon.appiconset in Resources */,
+				38BB4C14AC6B686F06FD35CF /* Preview Assets.xcassets in Resources */,
+				A54204AADDA44DB988292209 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A1234567890123456789015B /* Sources */ = {
+		A22EC595EEE5C5227B546F59 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1234567890123456789012A /* LumenFocusApp.swift in Sources */,
-				A1234567890123456789012C /* ContentView.swift in Sources */,
-				A1234567890123456789012E /* Preset.swift in Sources */,
-				A1234567890123456789012G /* Session.swift in Sources */,
-				A1234567890123456789012I /* Task.swift in Sources */,
-				A1234567890123456789012K /* AppIntents.swift in Sources */,
-				A1234567890123456789012M /* AudioService.swift in Sources */,
-				A1234567890123456789012O /* CloudKitService.swift in Sources */,
-				A1234567890123456789012Q /* CoreDataManager.swift in Sources */,
-				A1234567890123456789012S /* FocusModeService.swift in Sources */,
-				A1234567890123456789012U /* LiveActivityManager.swift in Sources */,
-				A1234567890123456789012W /* NotificationService.swift in Sources */,
-				A1234567890123456789012Y /* TimerViewModel.swift in Sources */,
-				A1234567890123456789013A /* AddTaskView.swift in Sources */,
-				A1234567890123456789013C /* PresetSwitcherView.swift in Sources */,
-				A1234567890123456789013E /* ProgressBarView.swift in Sources */,
-				A1234567890123456789013G /* RecentSessionsGraphView.swift in Sources */,
-				A1234567890123456789013I /* TimerCardView.swift in Sources */,
-				A1234567890123456789013K /* FocusView.swift in Sources */,
-				A1234567890123456789013M /* GardenView.swift in Sources */,
-				A1234567890123456789013O /* SettingsView.swift in Sources */,
-				A1234567890123456789013Q /* StandByView.swift in Sources */,
-				A1234567890123456789013S /* StatisticsView.swift in Sources */,
-				A1234567890123456789013U /* TasksView.swift in Sources */,
-				A1234567890123456789013W /* FocusWidget.swift in Sources */,
-				A1234567890123456789013Y /* Color+Extensions.swift in Sources */,
+				752F826C6EFE315E94C54545 /* ContentView.swift in Sources */,
+				87FD8AC7F72AADA7B389EAAF /* LumenFocusApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		A1234567890123456789015F /* Debug */ = {
+		25C442EDBA15923CC118137A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -402,7 +209,7 @@
 			};
 			name = Debug;
 		};
-		A1234567890123456789015G /* Release */ = {
+		0B7571BF58F95DE51CE4B1C2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -458,19 +265,14 @@
 			};
 			name = Release;
 		};
-		A1234567890123456789015H /* Debug */ = {
+		52E15CA87319A25D980805EA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
-				INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -488,19 +290,14 @@
 			};
 			name = Debug;
 		};
-		A1234567890123456789015I /* Release */ = {
+		3F70E285842EB10239EBC442 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
-				INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -521,38 +318,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A1234567890123456789015A /* Build configuration list for PBXNativeTarget "LumenFocus" */ = {
+		66FBA338AACE1CA3D2FFF664 /* Build configuration list for PBXNativeTarget "LumenFocus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A1234567890123456789015H /* Debug */,
-				A1234567890123456789015I /* Release */,
+				52E15CA87319A25D980805EA /* Debug */,
+				3F70E285842EB10239EBC442 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A1234567890123456789015E /* Build configuration list for PBXProject "LumenFocus" */ = {
+		84432BE5286A07712880E74F /* Build configuration list for PBXProject "LumenFocus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A1234567890123456789015F /* Debug */,
-				A1234567890123456789015G /* Release */,
+				25C442EDBA15923CC118137A /* Debug */,
+				0B7571BF58F95DE51CE4B1C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		A1234567890123456789015K /* LumenFocus.xcdatamodel */ = {
-			isa = XCVersionGroup;
-			children = (
-				A1234567890123456789015L /* LumenFocus.xcdatamodel */,
-			);
-			currentVersion = A1234567890123456789015L /* LumenFocus.xcdatamodel */;
-			path = LumenFocus.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
-	rootObject = A1234567890123456789015D /* Project object */;
+	rootObject = 8D78E23E95B6EE9F93FC76A5 /* Project object */;
 }

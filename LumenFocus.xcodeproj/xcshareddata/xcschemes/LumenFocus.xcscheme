@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A1234567890123456789012K"
+               BlueprintIdentifier = "F2DBE4DD64258537210091DD"
                BuildableName = "LumenFocus.app"
                BlueprintName = "LumenFocus"
                ReferencedContainer = "container:LumenFocus.xcodeproj">
@@ -26,8 +26,9 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      shouldAutocreateTestPlan = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <Testables>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -39,11 +40,10 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A1234567890123456789012K"
+            BlueprintIdentifier = "F2DBE4DD64258537210091DD"
             BuildableName = "LumenFocus.app"
             BlueprintName = "LumenFocus"
             ReferencedContainer = "container:LumenFocus.xcodeproj">
@@ -56,11 +56,10 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A1234567890123456789012K"
+            BlueprintIdentifier = "F2DBE4DD64258537210091DD"
             BuildableName = "LumenFocus.app"
             BlueprintName = "LumenFocus"
             ReferencedContainer = "container:LumenFocus.xcodeproj">
