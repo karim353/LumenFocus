@@ -76,7 +76,8 @@
 		A1234567890123456789014G /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AppIcon.appiconset; sourceTree = "<group>"; };
 		A1234567890123456789014H /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AppIcon.appiconset; sourceTree = "<group>"; };
 		A1234567890123456789014I /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A1234567890123456789014J /* LumenFocus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LumenFocus.xcdatamodel; sourceTree = "<group>"; };
+		A1234567890123456789015J /* LumenFocus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LumenFocus.xcdatamodeld; sourceTree = "<group>"; };
+		A1234567890123456789015L /* LumenFocus.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LumenFocus.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +110,7 @@
 				A1234567890123456789014T /* Extensions */,
 				A1234567890123456789014U /* Resources */,
 				A1234567890123456789014V /* Assets.xcassets */,
+				A1234567890123456789015K /* LumenFocus.xcdatamodel */,
 				A1234567890123456789012B /* LumenFocusApp.swift */,
 				A1234567890123456789012D /* ContentView.swift */,
 				A1234567890123456789014I /* Info.plist */,
@@ -119,7 +121,6 @@
 		A1234567890123456789014O /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A1234567890123456789014J /* LumenFocus.xcdatamodel */,
 				A1234567890123456789012F /* Preset.swift */,
 				A1234567890123456789012H /* Session.swift */,
 				A1234567890123456789012J /* Task.swift */,
@@ -541,12 +542,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		A1234567890123456789015J /* LumenFocus.xcdatamodel */ = {
+		A1234567890123456789015K /* LumenFocus.xcdatamodel */ = {
 			isa = XCVersionGroup;
 			children = (
-				A1234567890123456789014J /* LumenFocus.xcdatamodel */,
+				A1234567890123456789015L /* LumenFocus.xcdatamodel */,
 			);
-			currentVersion = A1234567890123456789014J /* LumenFocus.xcdatamodel */;
+			currentVersion = A1234567890123456789015L /* LumenFocus.xcdatamodel */;
 			path = LumenFocus.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
