@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Dark Theme Colors -->
+    <Color x:Key="Primary">#2196F3</Color>
+    <Color x:Key="PrimaryDark">#1976D2</Color>
+    <Color x:Key="PrimaryLight">#BBDEFB</Color>
+    <Color x:Key="Accent">#FF9800</Color>
+    <Color x:Key="Background">#121212</Color>
+    <Color x:Key="Surface">#1E1E1E</Color>
+    <Color x:Key="SurfaceVariant">#2D2D2D</Color>
+    <Color x:Key="OnBackground">#FFFFFF</Color>
+    <Color x:Key="OnSurface">#FFFFFF</Color>
+    <Color x:Key="OnPrimary">#FFFFFF</Color>
+    <Color x:Key="OnSecondary">#000000</Color>
+    <Color x:Key="Error">#CF6679</Color>
+    <Color x:Key="Success">#4CAF50</Color>
+    <Color x:Key="Warning">#FF9800</Color>
+    <Color x:Key="Info">#2196F3</Color>
+
+    <!-- Dark Theme Styles -->
+    <Style TargetType="ContentPage">
+        <Setter Property="BackgroundColor" Value="{DynamicResource Background}" />
+    </Style>
+
+    <Style TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource OnBackground}" />
+    </Style>
+
+    <Style TargetType="Entry">
+        <Setter Property="BackgroundColor" Value="{DynamicResource Surface}" />
+        <Setter Property="TextColor" Value="{DynamicResource OnSurface}" />
+        <Setter Property="PlaceholderColor" Value="{DynamicResource OnSurface}" />
+    </Style>
+
+    <Style TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{DynamicResource Primary}" />
+        <Setter Property="TextColor" Value="{DynamicResource OnPrimary}" />
+        <Setter Property="CornerRadius" Value="8" />
+    </Style>
+
+    <Style TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{DynamicResource Surface}" />
+        <Setter Property="BorderColor" Value="{DynamicResource SurfaceVariant}" />
+    </Style>
+
+    <Style TargetType="CollectionView">
+        <Setter Property="BackgroundColor" Value="{DynamicResource Background}" />
+    </Style>
+
+    <Style TargetType="Grid">
+        <Setter Property="BackgroundColor" Value="{DynamicResource Background}" />
+    </Style>
+
+    <Style TargetType="StackLayout">
+        <Setter Property="BackgroundColor" Value="{DynamicResource Background}" />
+    </Style>
+
+</ResourceDictionary>

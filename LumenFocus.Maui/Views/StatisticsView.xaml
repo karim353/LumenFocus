@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:LumenFocus.Maui.ViewModels"
+             x:Class="LumenFocus.Maui.Views.StatisticsView"
+             Title="Statistics">
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+            
+            <!-- Overview Stats -->
+            <Frame BackgroundColor="#512BD4" Padding="20" CornerRadius="15">
+                <StackLayout>
+                    <Label Text="📊 Your Focus Stats" 
+                           TextColor="White"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center" />
+                    
+                    <Grid ColumnDefinitions="*,*" Margin="0,20,0,0">
+                        <StackLayout Grid.Column="0" HorizontalOptions="Center">
+                            <Label Text="{Binding TotalSessions}" 
+                                   TextColor="White"
+                                   FontSize="32"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="Center" />
+                            <Label Text="Total Sessions" 
+                                   TextColor="White"
+                                   FontSize="14"
+                                   HorizontalOptions="Center" />
+                        </StackLayout>
+                        
+                        <StackLayout Grid.Column="1" HorizontalOptions="Center">
+                            <Label Text="{Binding TotalFocusTime, StringFormat='{0:hh\\:mm}'}" 
+                                   TextColor="White"
+                                   FontSize="32"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="Center" />
+                            <Label Text="Total Focus Time" 
+                                   TextColor="White"
+                                   FontSize="14"
+                                   HorizontalOptions="Center" />
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+
+            <!-- Weekly Progress -->
+            <Frame BackgroundColor="White" Padding="20" CornerRadius="15">
+                <StackLayout>
+                    <Label Text="📈 This Week" 
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           Margin="0,0,0,15" />
+                    
+                    <Grid ColumnDefinitions="*,*,*,*,*,*,*" Margin="0,10,0,0">
+                        <StackLayout Grid.Column="0" HorizontalOptions="Center">
+                            <Label Text="Mon" FontSize="12" HorizontalOptions="Center" />
+                            <BoxView HeightRequest="{Binding MondaySessions, Converter={StaticResource SessionsToHeightConverter}}"
+                                     BackgroundColor="#512BD4"
+                                     WidthRequest="20"
+                                     Margin="0,5,0,0" />
+                        </StackLayout>
+                        
+                        <StackLayout Grid.Column="1" HorizontalOptions="Center">
+                            <Label Text="Tue" FontSize="12" HorizontalOptions="Center" />
+                            <BoxView HeightRequest="{Binding TuesdaySessions, Converter={StaticResource SessionsToHeightConverter}}"
+                                     BackgroundColor="#512BD4"
+                                     WidthRequest="20"
+                                     Margin="0,5,0,0" />
+                        </StackLayout>
+                        
+                        <StackLayout Grid.Column="2" HorizontalOptions="Center">
+                            <Label Text="Wed" FontSize="12" HorizontalOptions="Center" />
+                            <BoxView HeightRequest="{Binding WednesdaySessions, Converter={StaticResource SessionsToHeightConverter}}"
+                                     BackgroundColor="#512BD4"
+                                     WidthRequest="20"
+                                     Margin="0,5,0,0" />
+                        </StackLayout>
+                        
+                        <StackLayout Grid.Column="3" HorizontalOptions="Center">
+                            <Label Text="Thu" FontSize="12" HorizontalOptions="Center" />
+                            <BoxView HeightRequest="{Binding ThursdaySessions, Converter={StaticResource SessionsToHeightConverter}}"
+                                     BackgroundColor="#512BD4"
+                                     WidthRequest="20"
+                                     Margin="0,5,0,0" />
+                        </StackLayout>
+                        
+                        <StackLayout Grid.Column="4" HorizontalOptions="Center">
+                            <Label Text="Fri" FontSize="12" HorizontalOptions="Center" />
+                            <BoxView HeightRequest="{Binding FridaySessions, Converter={StaticResource SessionsToHeightConverter}}"
+                                     BackgroundColor="#512BD4"
+                                     WidthRequest="20"
+                                     Margin="0,5,0,0" />
+                        </StackLayout>
+                        
+                        <StackLayout Grid.Column="5" HorizontalOptions="Center">
+                            <Label Text="Sat" FontSize="12" HorizontalOptions="Center" />
+                            <BoxView HeightRequest="{Binding SaturdaySessions, Converter={StaticResource SessionsToHeightConverter}}"
+                                     BackgroundColor="#512BD4"
+                                     WidthRequest="20"
+                                     Margin="0,5,0,0" />
+                        </StackLayout>
+                        
+                        <StackLayout Grid.Column="6" HorizontalOptions="Center">
+                            <Label Text="Sun" FontSize="12" HorizontalOptions="Center" />
+                            <BoxView HeightRequest="{Binding SundaySessions, Converter={StaticResource SessionsToHeightConverter}}"
+                                     BackgroundColor="#512BD4"
+                                     WidthRequest="20"
+                                     Margin="0,5,0,0" />
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+
+            <!-- Recent Sessions -->
+            <Frame BackgroundColor="White" Padding="20" CornerRadius="15">
+                <StackLayout>
+                    <Label Text="🕐 Recent Sessions" 
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           Margin="0,0,0,15" />
+                    
+                    <CollectionView ItemsSource="{Binding RecentSessions}"
+                                   HeightRequest="200">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid ColumnDefinitions="*,Auto" Padding="10,5">
+                                    <StackLayout Grid.Column="0">
+                                        <Label Text="{Binding Task.Title, StringFormat='{0}'}" 
+                                               FontSize="16"
+                                               FontAttributes="Bold" />
+                                        <Label Text="{Binding StartedAt, StringFormat='{0:MMM dd, yyyy HH:mm}'}" 
+                                               FontSize="12"
+                                               TextColor="Gray" />
+                                    </StackLayout>
+                                    <Label Grid.Column="1" 
+                                           Text="{Binding Duration, StringFormat='{0:mm\\:ss}'}" 
+                                           FontSize="16"
+                                           VerticalOptions="Center" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </Frame>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

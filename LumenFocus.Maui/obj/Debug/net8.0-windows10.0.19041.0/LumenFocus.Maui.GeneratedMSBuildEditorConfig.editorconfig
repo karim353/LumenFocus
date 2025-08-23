@@ -1,0 +1,91 @@
+is_global = true
+build_property.TargetFramework = net8.0-windows10.0.19041.0
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v8.0
+build_property.TargetPlatformMinVersion = 10.0.17763.0
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 9A19103F-16F7-4668-BE54-9A1E7A4F7556
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = LumenFocus.Maui
+build_property.ProjectDir = C:\Users\KaRKhaziev\RiderProjects\LumenFocus\LumenFocus.Maui\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.CsWinRTAotOptimizerEnabled = true
+build_property.CsWinRTAotExportsEnabled = 
+build_property.CsWinRTRcwFactoryFallbackGeneratorForceOptIn = 
+build_property.CsWinRTRcwFactoryFallbackGeneratorForceOptOut = 
+build_property.CsWinRTCcwLookupTableGeneratorEnabled = true
+build_property.CsWinRTMergeReferencedActivationFactories = 
+build_property.CsWinRTAotWarningLevel = 
+build_property.CsWinRTUseWindowsUIXamlProjections = false
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/KaRKhaziev/RiderProjects/LumenFocus/LumenFocus.Maui/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = LumenFocus.Maui.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/Users/KaRKhaziev/RiderProjects/LumenFocus/LumenFocus.Maui/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = LumenFocus.Maui.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[C:/Users/KaRKhaziev/RiderProjects/LumenFocus/LumenFocus.Maui/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = LumenFocus.Maui.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[C:/Users/KaRKhaziev/RiderProjects/LumenFocus/LumenFocus.Maui/Resources/Styles/DarkTheme.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = LumenFocus.Maui.Resources.Styles.DarkTheme.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\DarkTheme.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\DarkTheme.xaml
+
+[C:/Users/KaRKhaziev/RiderProjects/LumenFocus/LumenFocus.Maui/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = LumenFocus.Maui.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
+
+[C:/Users/KaRKhaziev/RiderProjects/LumenFocus/LumenFocus.Maui/Views/AddTaskView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = LumenFocus.Maui.Views.AddTaskView.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\AddTaskView.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\AddTaskView.xaml
+
+[C:/Users/KaRKhaziev/RiderProjects/LumenFocus/LumenFocus.Maui/Views/FocusView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = LumenFocus.Maui.Views.FocusView.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\FocusView.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\FocusView.xaml
+
+[C:/Users/KaRKhaziev/RiderProjects/LumenFocus/LumenFocus.Maui/Views/GardenView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = LumenFocus.Maui.Views.GardenView.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\GardenView.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\GardenView.xaml
+
+[C:/Users/KaRKhaziev/RiderProjects/LumenFocus/LumenFocus.Maui/Views/SettingsView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = LumenFocus.Maui.Views.SettingsView.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\SettingsView.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\SettingsView.xaml
+
+[C:/Users/KaRKhaziev/RiderProjects/LumenFocus/LumenFocus.Maui/Views/StatisticsView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = LumenFocus.Maui.Views.StatisticsView.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\StatisticsView.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\StatisticsView.xaml
+
+[C:/Users/KaRKhaziev/RiderProjects/LumenFocus/LumenFocus.Maui/Views/TasksView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = LumenFocus.Maui.Views.TasksView.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\TasksView.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\TasksView.xaml

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:LumenFocus.Maui.ViewModels"
+             x:Class="LumenFocus.Maui.Views.GardenView"
+             Title="Garden">
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+            
+            <!-- Garden Header -->
+            <Frame BackgroundColor="#4CAF50" Padding="20" CornerRadius="15">
+                <StackLayout HorizontalOptions="Center">
+                    <Label Text="🌱 Your Focus Garden" 
+                           TextColor="White"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center" />
+                    <Label Text="Grow plants by completing focus sessions!" 
+                           TextColor="White"
+                           FontSize="16"
+                           HorizontalOptions="Center"
+                           Margin="0,10,0,0" />
+                </StackLayout>
+            </Frame>
+
+            <!-- Plants Grid -->
+            <CollectionView ItemsSource="{Binding Plants}"
+                           Margin="0,20,0,0">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" 
+                                   Span="2" 
+                                   HorizontalItemSpacing="10"
+                                   VerticalItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="White" 
+                               Padding="15" 
+                               CornerRadius="15"
+                               Margin="5">
+                            <StackLayout HorizontalOptions="Center">
+                                <!-- Simplified UI to match existing model properties -->
+                                <Label Text="🌿" 
+                                       FontSize="40"
+                                       HorizontalOptions="Center" />
+                                <Label Text="{Binding Name}" 
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       HorizontalOptions="Center"
+                                       Margin="0,10,0,5" />
+                                <Label Text="{Binding PlantType}" 
+                                       FontSize="12"
+                                       TextColor="Gray"
+                                       HorizontalOptions="Center" />
+                                <ProgressBar Progress="{Binding GrowthLevel}" 
+                                           ProgressColor="#4CAF50"
+                                           Margin="0,10,0,0" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Add Plant Button -->
+            <Button Text="Plant New Seed" 
+                    Command="{Binding AddPlantCommand}"
+                    BackgroundColor="#4CAF50"
+                    TextColor="White"
+                    HeightRequest="50"
+                    CornerRadius="25" />
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

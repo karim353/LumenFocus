@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:LumenFocus.Maui.ViewModels"
+             x:Class="LumenFocus.Maui.Views.FocusView"
+             Title="Focus">
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+            
+            <!-- Timer Display -->
+            <Frame BackgroundColor="#512BD4" Padding="30" CornerRadius="20">
+                <StackLayout HorizontalOptions="Center">
+                    <Label Text="{Binding CurrentTaskTitle}"
+                           TextColor="White"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center" />
+                    
+                    <Label Text="{Binding RemainingTime, StringFormat='{0:mm\\:ss}'}"
+                           TextColor="White"
+                           FontSize="48"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           Margin="0,20,0,0" />
+                    
+                    <Label Text="{Binding TotalTime, StringFormat='Total: {0:mm\\:ss}'}"
+                           TextColor="White"
+                           FontSize="16"
+                           HorizontalOptions="Center"
+                           Margin="0,10,0,0" />
+                </StackLayout>
+            </Frame>
+
+            <!-- Control Buttons -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
+                <Button Text="Start"
+                        Command="{Binding StartTimerCommand}"
+                        IsVisible="{Binding IsRunning, Converter={StaticResource InverseBoolConverter}}"
+                        BackgroundColor="Green"
+                        TextColor="White"
+                        WidthRequest="100"
+                        HeightRequest="50"
+                        CornerRadius="25" />
+                
+                <Button Text="Pause"
+                        Command="{Binding PauseTimerCommand}"
+                        IsVisible="{Binding IsRunning, Converter={StaticResource BoolConverter}}"
+                        BackgroundColor="Orange"
+                        TextColor="White"
+                        WidthRequest="100"
+                        HeightRequest="50"
+                        CornerRadius="25" />
+                
+                <Button Text="Resume"
+                        Command="{Binding ResumeTimerCommand}"
+                        IsVisible="{Binding IsPaused, Converter={StaticResource BoolConverter}}"
+                        BackgroundColor="Blue"
+                        TextColor="White"
+                        WidthRequest="100"
+                        HeightRequest="50"
+                        CornerRadius="25" />
+                
+                <Button Text="Stop"
+                        Command="{Binding StopTimerCommand}"
+                        IsVisible="{Binding IsRunning, Converter={StaticResource BoolConverter}}"
+                        BackgroundColor="Red"
+                        TextColor="White"
+                        WidthRequest="100"
+                        HeightRequest="50"
+                        CornerRadius="25" />
+            </StackLayout>
+
+            <!-- Reset Button -->
+            <Button Text="Reset"
+                    Command="{Binding ResetTimerCommand}"
+                    BackgroundColor="Gray"
+                    TextColor="White"
+                    HeightRequest="50"
+                    CornerRadius="25" />
+
+            <!-- Task Selection -->
+            <Frame BackgroundColor="LightGray" Padding="15" CornerRadius="10">
+                <StackLayout>
+                    <Label Text="Select Task (Optional)" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           Margin="0,0,0,10" />
+                    
+                    <Picker Title="Choose a task"
+                            ItemsSource="{Binding AvailableTasks}"
+                            SelectedItem="{Binding SelectedTask}"
+                            ItemDisplayBinding="{Binding Title}" />
+                </StackLayout>
+            </Frame>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:LumenFocus.Maui.ViewModels"
+             x:Class="LumenFocus.Maui.Views.AddTaskView"
+             Title="Add Task">
+
+    <ContentPage.BindingContext>
+        <viewmodels:AddTaskViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+            
+            <!-- Header -->
+            <Label Text="➕ Add New Task" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" />
+
+            <!-- Task Title -->
+            <Frame BackgroundColor="White" Padding="20" CornerRadius="15" HasShadow="True">
+                <StackLayout>
+                    <Label Text="Task Title" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           Margin="0,0,0,10" />
+                    <Entry x:Name="TitleEntry" 
+                           Placeholder="Enter task title..."
+                           FontSize="16" />
+                </StackLayout>
+            </Frame>
+
+            <!-- Task Color -->
+            <Frame BackgroundColor="White" Padding="20" CornerRadius="15" HasShadow="True">
+                <StackLayout>
+                    <Label Text="Task Color" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           Margin="0,0,0,10" />
+                    <HorizontalStackLayout Spacing="10">
+                        <Button Text="🔴" 
+                                BackgroundColor="Red" 
+                                TextColor="White"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                CornerRadius="25"
+                                Command="{Binding SelectColorCommand}"
+                                CommandParameter="red" />
+                        <Button Text="🔵" 
+                                BackgroundColor="Blue" 
+                                TextColor="White"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                CornerRadius="25"
+                                Command="{Binding SelectColorCommand}"
+                                CommandParameter="blue" />
+                        <Button Text="🟢" 
+                                BackgroundColor="Green" 
+                                TextColor="White"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                CornerRadius="25"
+                                Command="{Binding SelectColorCommand}"
+                                CommandParameter="green" />
+                        <Button Text="🟡" 
+                                BackgroundColor="Yellow" 
+                                TextColor="Black"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                CornerRadius="25"
+                                Command="{Binding SelectColorCommand}"
+                                CommandParameter="yellow" />
+                        <Button Text="🟣" 
+                                BackgroundColor="Purple" 
+                                TextColor="White"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                CornerRadius="25"
+                                Command="{Binding SelectColorCommand}"
+                                CommandParameter="purple" />
+                        <Button Text="🟠" 
+                                BackgroundColor="Orange" 
+                                TextColor="White"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                CornerRadius="25"
+                                Command="{Binding SelectColorCommand}"
+                                CommandParameter="orange" />
+                    </HorizontalStackLayout>
+                </StackLayout>
+            </Frame>
+
+            <!-- Task Icon -->
+            <Frame BackgroundColor="White" Padding="20" CornerRadius="15" HasShadow="True">
+                <StackLayout>
+                    <Label Text="Task Icon" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           Margin="0,0,0,10" />
+                    <HorizontalStackLayout Spacing="10">
+                        <Button Text="📚" 
+                                BackgroundColor="Transparent" 
+                                TextColor="#512BD4"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                CornerRadius="25"
+                                Command="{Binding SelectIconCommand}"
+                                CommandParameter="📚" />
+                        <Button Text="💻" 
+                                BackgroundColor="Transparent" 
+                                TextColor="#512BD4"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                CornerRadius="25"
+                                Command="{Binding SelectIconCommand}"
+                                CommandParameter="💻" />
+                        <Button Text="✍️" 
+                                BackgroundColor="Transparent" 
+                                TextColor="#512BD4"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                CornerRadius="25"
+                                Command="{Binding SelectIconCommand}"
+                                CommandParameter="✍️" />
+                        <Button Text="🎯" 
+                                BackgroundColor="Transparent" 
+                                TextColor="#512BD4"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                CornerRadius="25"
+                                Command="{Binding SelectIconCommand}"
+                                CommandParameter="🎯" />
+                        <Button Text="🧠" 
+                                BackgroundColor="Transparent" 
+                                TextColor="#512BD4"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                CornerRadius="25"
+                                Command="{Binding SelectIconCommand}"
+                                CommandParameter="🧠" />
+                        <Button Text="📖" 
+                                BackgroundColor="Transparent" 
+                                TextColor="#512BD4"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                CornerRadius="25"
+                                Command="{Binding SelectIconCommand}"
+                                CommandParameter="📖" />
+                    </HorizontalStackLayout>
+                </StackLayout>
+            </Frame>
+
+            <!-- Task Tags -->
+            <Frame BackgroundColor="White" Padding="20" CornerRadius="15" HasShadow="True">
+                <StackLayout>
+                    <Label Text="Task Tags" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           Margin="0,0,0,10" />
+                    <Entry x:Name="TagsEntry" 
+                           Placeholder="Enter tags separated by commas..."
+                           FontSize="16" />
+                    <Label Text="Example: work, important, urgent" 
+                           FontSize="12" 
+                           TextColor="Gray" 
+                           Margin="0,5,0,0" />
+                </StackLayout>
+            </Frame>
+
+            <!-- Action Buttons -->
+            <StackLayout Orientation="Horizontal" 
+                       HorizontalOptions="Center" 
+                       Spacing="15">
+                <Button Text="Cancel"
+                        Command="{Binding CancelCommand}"
+                        BackgroundColor="#9E9E9E"
+                        TextColor="White"
+                        HeightRequest="50"
+                        CornerRadius="25"
+                        WidthRequest="120" />
+                
+                <Button Text="Create Task"
+                        Command="{Binding CreateTaskCommand}"
+                        BackgroundColor="#4CAF50"
+                        TextColor="White"
+                        HeightRequest="50"
+                        CornerRadius="25"
+                        WidthRequest="120" />
+            </StackLayout>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

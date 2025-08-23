@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:LumenFocus.Maui.ViewModels"
+             x:Class="LumenFocus.Maui.Views.SettingsView"
+             Title="Settings">
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+            
+            <!-- Timer Settings -->
+            <Frame BackgroundColor="White" Padding="20" CornerRadius="15">
+                <StackLayout>
+                    <Label Text="⏱ Timer Settings" 
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           Margin="0,0,0,15" />
+                    
+                    <StackLayout Spacing="15">
+                        <StackLayout>
+                            <Label Text="Default Focus Duration (minutes)" 
+                                   FontSize="16" />
+                            <Slider Value="{Binding DefaultFocusDuration}"
+                                    Minimum="5"
+                                    Maximum="120" />
+                            <Label Text="{Binding DefaultFocusDuration, StringFormat='{0} minutes'}" 
+                                   FontSize="14"
+                                   TextColor="Gray"
+                                   HorizontalOptions="Center" />
+                        </StackLayout>
+                        
+                        <StackLayout>
+                            <Label Text="Default Break Duration (minutes)" 
+                                   FontSize="16" />
+                            <Slider Value="{Binding DefaultBreakDuration}"
+                                    Minimum="1"
+                                    Maximum="30" />
+                            <Label Text="{Binding DefaultBreakDuration, StringFormat='{0} minutes'}" 
+                                   FontSize="14"
+                                   TextColor="Gray"
+                                   HorizontalOptions="Center" />
+                        </StackLayout>
+                        
+                        <StackLayout>
+                            <Label Text="Long Break Duration (minutes)" 
+                                   FontSize="16" />
+                            <Slider Value="{Binding LongBreakDuration}"
+                                    Minimum="5"
+                                    Maximum="60" />
+                            <Label Text="{Binding LongBreakDuration, StringFormat='{0} minutes'}" 
+                                   FontSize="14"
+                                   TextColor="Gray"
+                                   HorizontalOptions="Center" />
+                        </StackLayout>
+                        
+                        <StackLayout>
+                            <Label Text="Sessions before long break" 
+                                   FontSize="16" />
+                            <Slider Value="{Binding SessionsBeforeLongBreak}"
+                                    Minimum="2"
+                                    Maximum="8" />
+                            <Label Text="{Binding SessionsBeforeLongBreak, StringFormat='{0} sessions'}" 
+                                   FontSize="14"
+                                   TextColor="Gray"
+                                   HorizontalOptions="Center" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+            <!-- Notification Settings -->
+            <Frame BackgroundColor="White" Padding="20" CornerRadius="15">
+                <StackLayout>
+                    <Label Text="🔔 Notifications" 
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           Margin="0,0,0,15" />
+                    
+                    <StackLayout Spacing="15">
+                        <HorizontalStackLayout>
+                            <CheckBox IsChecked="{Binding NotificationsEnabled}" />
+                            <Label Text="Enable notifications" 
+                                   FontSize="16"
+                                   VerticalOptions="Center"
+                                   Margin="10,0,0,0" />
+                        </HorizontalStackLayout>
+                        
+                        <HorizontalStackLayout>
+                            <CheckBox IsChecked="{Binding SoundEnabled}" />
+                            <Label Text="Enable sound" 
+                                   FontSize="16"
+                                   VerticalOptions="Center"
+                                   Margin="10,0,0,0" />
+                        </HorizontalStackLayout>
+                        
+                        <HorizontalStackLayout>
+                            <CheckBox IsChecked="{Binding VibrationEnabled}" />
+                            <Label Text="Enable vibration" 
+                                   FontSize="16"
+                                   VerticalOptions="Center"
+                                   Margin="10,0,0,0" />
+                        </HorizontalStackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+            <!-- Focus Mode Settings -->
+            <Frame BackgroundColor="White" Padding="20" CornerRadius="15">
+                <StackLayout>
+                    <Label Text="🎯 Focus Mode" 
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           Margin="0,0,0,15" />
+                    
+                    <StackLayout Spacing="15">
+                        <HorizontalStackLayout>
+                            <CheckBox IsChecked="{Binding FocusModeEnabled}" />
+                            <Label Text="Enable focus mode" 
+                                   FontSize="16"
+                                   VerticalOptions="Center"
+                                   Margin="10,0,0,0" />
+                        </HorizontalStackLayout>
+                        
+                        <!-- Optional toggles can be added here when implemented in the ViewModel -->
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+            <!-- Data Management -->
+            <Frame BackgroundColor="White" Padding="20" CornerRadius="15">
+                <StackLayout>
+                    <Label Text="💾 Data Management" 
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           Margin="0,0,0,15" />
+                    
+                    <StackLayout Spacing="15">
+                        <Button Text="Export Settings" 
+                                Command="{Binding ExportSettingsCommand}"
+                                BackgroundColor="#4CAF50"
+                                TextColor="White"
+                                HeightRequest="45"
+                                CornerRadius="22" />
+                        
+                        <Button Text="Import Settings" 
+                                Command="{Binding ImportSettingsCommand}"
+                                BackgroundColor="#2196F3"
+                                TextColor="White"
+                                HeightRequest="45"
+                                CornerRadius="22" />
+                        
+                        <Button Text="Clear All Data" 
+                                Command="{Binding ClearDataCommand}"
+                                BackgroundColor="#F44336"
+                                TextColor="White"
+                                HeightRequest="45"
+                                CornerRadius="22" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+            <!-- About -->
+            <Frame BackgroundColor="White" Padding="20" CornerRadius="15">
+                <StackLayout>
+                    <Label Text="ℹ️ About" 
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           Margin="0,0,0,15" />
+                    
+                    <StackLayout Spacing="10">
+                        <Label Text="LumenFocus v1.0" 
+                               FontSize="16"
+                               HorizontalOptions="Center" />
+                        <Label Text="A focus timer and task management app" 
+                               FontSize="14"
+                               TextColor="Gray"
+                               HorizontalOptions="Center" />
+                        <Label Text="Built with .NET MAUI" 
+                               FontSize="12"
+                               TextColor="LightGray"
+                               HorizontalOptions="Center" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

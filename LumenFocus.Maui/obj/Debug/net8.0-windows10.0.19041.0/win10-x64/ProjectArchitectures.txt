@@ -1,0 +1,1 @@
+C:\Users\KaRKhaziev\RiderProjects\LumenFocus\LumenFocus.Maui\LumenFocus.Maui.csproj;x64

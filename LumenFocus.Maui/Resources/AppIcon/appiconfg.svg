@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <!-- Timer circle -->
+  <circle cx="512" cy="400" r="200" fill="none" stroke="#fff" stroke-width="20" stroke-linecap="round"/>
+  
+  <!-- Timer hands -->
+  <line x1="512" y1="400" x2="512" y2="250" stroke="#fff" stroke-width="16" stroke-linecap="round"/>
+  <line x1="512" y1="400" x2="650" y2="400" stroke="#fff" stroke-width="16" stroke-linecap="round"/>
+  
+  <!-- Plant -->
+  <path d="M400 700 Q512 600 624 700" fill="none" stroke="#fff" stroke-width="20" stroke-linecap="round"/>
+  <path d="M420 700 Q512 650 604 700" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round"/>
+  <path d="M440 700 Q512 680 584 700" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
+</svg>
